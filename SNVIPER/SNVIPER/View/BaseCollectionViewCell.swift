@@ -44,7 +44,7 @@ open class BaseCollectionViewCell<T>: UICollectionViewCell, Reusable, AddViewPro
     }
     
     /// 取可重用id
-    open static var reuseId: String {
+    public static var reuseId: String {
         return self.className;
     }
     

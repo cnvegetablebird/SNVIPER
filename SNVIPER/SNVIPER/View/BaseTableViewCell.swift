@@ -23,7 +23,7 @@ open class BaseTableViewCell<T>: UITableViewCell,Reusable,AddViewProtocol,TableV
     
     open var delegate: TouchUpDelegate?;
     
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         addSubviews();
@@ -37,7 +37,7 @@ open class BaseTableViewCell<T>: UITableViewCell,Reusable,AddViewProtocol,TableV
     func setBottomLine(left: Float = 0.0,right: Float = 0.0,height: Float,color: UIColor) {
         self.bottomLine.isHidden = false;
         self.bottomLine.backgroundColor = color;
-        self.contentView.bringSubview(toFront: self.bottomLine);
+        self.contentView.bringSubviewToFront(self.bottomLine);
         
         self.bottomLine.frame = CGRect(x: CGFloat(left), y: self.contentView.bounds.size.height - CGFloat(height), width: self.contentView.bounds.size.width - CGFloat(left) - CGFloat(right), height: CGFloat(height));
     }
@@ -61,7 +61,7 @@ open class BaseTableViewCell<T>: UITableViewCell,Reusable,AddViewProtocol,TableV
     }
     
     /// 取可重用id
-    open static var reuseId: String {
+    public static var reuseId: String {
         return self.className;
     }
     
