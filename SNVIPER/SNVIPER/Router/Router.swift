@@ -64,7 +64,8 @@ open class Router: NSObject, RouterProtocol{
                 resultVC?.navigationController?.pushViewController(v, animated: true);
             }
             else {
-                resultVC?.navigationController?.present(v, animated: true, completion: nil);
+                let nav = NavigationController(rootViewController: v);
+                resultVC?.navigationController?.present(nav, animated: true, completion: nil);
             }
         }
     }
