@@ -9,12 +9,12 @@ PODS:
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.0)
-  - Result (4.0.0)
-  - Reusable (4.0.4):
-    - Reusable/Storyboard (= 4.0.4)
-    - Reusable/View (= 4.0.4)
-  - Reusable/Storyboard (4.0.4)
-  - Reusable/View (4.0.4)
+  - Result (4.1.0)
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
   - SNExtensions (0.0.1)
   - Toast-Swift (4.0.1)
   - UICKeyChainStore (2.1.2)
@@ -53,8 +53,8 @@ SPEC CHECKSUMS:
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
-  Reusable: 7fc772097df3e5fc86f59d8a7af9708e49b5ff55
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   SNExtensions: 9d617647633a79473f378db041b2d63f4ca9fed9
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
