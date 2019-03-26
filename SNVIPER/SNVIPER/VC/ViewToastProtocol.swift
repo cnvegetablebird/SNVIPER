@@ -49,7 +49,7 @@ public extension ViewToastProtocol {
     /// - Parameters:
     ///   - text: 显示文本
     ///   - duration: 显示多久，单位秒
-    public func showToastBottomWithText(text: String, duration: TimeInterval = 0.3) {
+    func showToastBottomWithText(text: String, duration: TimeInterval = 0.3) {
         let window = UIApplication.shared.windows.last;
         window?.makeToast(text, duration: duration, position: ToastPosition.bottom);
     }
@@ -59,7 +59,7 @@ public extension ViewToastProtocol {
     /// - Parameters:
     ///   - text: 显示文本
     ///   - duration: 显示多久，单位秒
-    public func showToastTopWithText(text: String, duration: TimeInterval = 0.3) {
+    func showToastTopWithText(text: String, duration: TimeInterval = 0.3) {
         let window = UIApplication.shared.windows.last;
         window?.makeToast(text, duration: duration, position: ToastPosition.top);
     }

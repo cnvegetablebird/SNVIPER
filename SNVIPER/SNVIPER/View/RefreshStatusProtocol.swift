@@ -29,14 +29,14 @@ public protocol RefreshStatusProtocol {
 
 public extension RefreshStatusProtocol {
     
-    public func beginRefreshing() {}
-    public func hiddenFooter(hidden: Bool) {}
-    public func endRefreshData() {}
-    public func endLoadMoreData() {}
-    public func loadMoreNoMoreData() {}
-    public func resetNoMoreData() {}
-    public func setRefreshHeaderTitle(_ title: String!, for state: MJRefreshState) {}
-    public func setLoadingStyle(type: WaterViewType) {}
-    public func addRefreshTarget(_ target: Any!, refreshAction action: Selector!) {}
-    public func addLoadMoreTarget(_ target: Any!, loadMoreAction action: Selector!) {}
+    func beginRefreshing() {}
+    func hiddenFooter(hidden: Bool) {}
+    func endRefreshData() {}
+    func endLoadMoreData() {}
+    func loadMoreNoMoreData() {}
+    func resetNoMoreData() {}
+    func setRefreshHeaderTitle(_ title: String!, for state: MJRefreshState) {}
+    func setLoadingStyle(type: WaterViewType) {}
+    func addRefreshTarget(_ target: Any!, refreshAction action: Selector!) {}
+    func addLoadMoreTarget(_ target: Any!, loadMoreAction action: Selector!) {}
 }

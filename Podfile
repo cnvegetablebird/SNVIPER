@@ -7,10 +7,10 @@ use_frameworks!
 pod 'Moya'
 pod 'FCUUID'
 pod 'YYCache'
-pod 'HandyJSON'
+pod 'HandyJSON' , '~> 5.0.0-beta'
 pod 'MJRefresh'
 pod 'UITableView+FDTemplateLayoutCell'
-pod 'SNExtensions' , '~> 0.0.1'
+pod 'SNExtensions' , '~> 1.1.4'
 pod 'Toast-Swift'
 pod 'Reusable'
 

@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIBarButtonItem {
-    public class func backBarButtonItem(target: Any?, action: Selector, imageName: String) -> UIBarButtonItem? {
+    class func backBarButtonItem(target: Any?, action: Selector, imageName: String) -> UIBarButtonItem? {
         let highlightedImageName = imageName + "_pressed";
         let image = UIImage(named: imageName);
         let highlightedImage = UIImage(named: highlightedImageName);

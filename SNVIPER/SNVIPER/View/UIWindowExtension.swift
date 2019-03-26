@@ -20,12 +20,12 @@ B.presentingViewController=A
 
 public extension UIWindow {
     
-    public class func getWindow() -> UIWindow?? {
+    class func getWindow() -> UIWindow?? {
         let window: UIWindow?? = UIApplication.shared.delegate?.window;
         return window;
     }
     
-    public class func rootViewController() -> UIViewController? {
+    class func rootViewController() -> UIViewController? {
         let window: UIWindow?? = UIWindow.getWindow();
         if let rootvc = window??.rootViewController {
             return rootvc;
@@ -35,7 +35,7 @@ public extension UIWindow {
         }
     }
 
-    public class func visibleViewController() -> UIViewController? {
+    class func visibleViewController() -> UIViewController? {
         
         let rootvc = UIWindow.rootViewController();
         return UIWindow.getVisibleViewController(vc: rootvc);

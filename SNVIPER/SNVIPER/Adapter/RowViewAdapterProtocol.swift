@@ -41,33 +41,33 @@ public protocol RowViewAdapterProtocol: class {
 
 public extension RowViewAdapterProtocol {
     
-    public func rowItemCount() -> Int {
+    func rowItemCount() -> Int {
         return items.count;
     }
     
     // MARK: - add
-    public func addRowItem(rowItem: RowItemType) {
+    func addRowItem(rowItem: RowItemType) {
         items.append(rowItem);
         reloadData();
     }
     
-    public func addRowItems(rowItems: Array<RowItemType>) {
+    func addRowItems(rowItems: Array<RowItemType>) {
         items.append(contentsOf: rowItems);
         reloadData();
     }
     
-    public func addRowItem(rowItem: RowItemType,row: Int) {
+    func addRowItem(rowItem: RowItemType,row: Int) {
         items.insert(rowItem, at: row);
         reloadData();
     }
     
-    public func addRowItems(rowItems: Array<RowItemType>,row: Int) {
+    func addRowItems(rowItems: Array<RowItemType>,row: Int) {
         items.insert(contentsOf: rowItems, at: row);
         reloadData();
     }
     
     // MARK: - delete
-    public func removeRowItems(rowItems: Array<RowItemType>) {
+    func removeRowItems(rowItems: Array<RowItemType>) {
         
         for item in rowItems {
             removeRowItem(rowItem: item);
@@ -75,7 +75,7 @@ public extension RowViewAdapterProtocol {
         reloadData();
     }
     
-    public func removeRowItem(rowItem: RowItemType) {
+    func removeRowItem(rowItem: RowItemType) {
         
         let count  = items.count;
         for i in 0..<count {
@@ -90,18 +90,18 @@ public extension RowViewAdapterProtocol {
         reloadData();
     }
     
-    public func removeRowItemAt(row: Int) {
+    func removeRowItemAt(row: Int) {
         items.remove(at: row);
         reloadData();
     }
     
-    public func removeAllObjects() {
+    func removeAllObjects() {
         items.removeAll();
         reloadData();
     }
 
     // MARK: - update
-    public func updateRowItem(rowItem: RowItemType) {
+    func updateRowItem(rowItem: RowItemType) {
         
         let count  = items.count;
         for i in 0..<count {
@@ -118,15 +118,15 @@ public extension RowViewAdapterProtocol {
     }
     
     // MARK: - search
-    public func rowItem(row: Int) -> RowItemType {
+    func rowItem(row: Int) -> RowItemType {
         return items[row];
     }
     
-    public func rowItemId(rowItem: RowItemType) -> String {
+    func rowItemId(rowItem: RowItemType) -> String {
         return "";
     }
     
-    public func row(rowItemId: String) -> Int {
+    func row(rowItemId: String) -> Int {
         return 0;
     }
 }

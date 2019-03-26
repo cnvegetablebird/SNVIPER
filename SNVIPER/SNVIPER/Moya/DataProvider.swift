@@ -176,7 +176,7 @@ extension DataProvider: DataProviderProtocol {
 
 // MARK: 公用配置
 public extension MoyaProvider {
-    public final class func endpointMapping(for target: Target) -> Endpoint {
+    final class func endpointMapping(for target: Target) -> Endpoint {
         let lTarget = target as! BaseTargetType;
         
         let url = target.baseURL.appendingPathComponent(target.path).absoluteString
@@ -189,7 +189,7 @@ public extension MoyaProvider {
         )
     }
     
-    public final class func requestMapping(for endpoint: Endpoint, closure: RequestResultClosure) {
+    final class func requestMapping(for endpoint: Endpoint, closure: RequestResultClosure) {
         
         do {
             var urlRequest = try endpoint.urlRequest()
@@ -213,7 +213,7 @@ public extension MoyaProvider {
         }
     }
     
-    public final class func alamofireManager() -> Manager {
+    final class func alamofireManager() -> Manager {
         
         let serverTrustPolicyManager = CustomServerTrustPolicyManager(policies: ["*": .disableEvaluation]);
         
@@ -239,7 +239,7 @@ public extension MoyaProvider {
         return manager
     }
     
-    public final class func defaultPlugins() -> [PluginType] {
+    final class func defaultPlugins() -> [PluginType] {
         return [];
     }
     

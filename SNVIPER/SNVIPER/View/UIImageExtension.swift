@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImage {
-    public func opaque() -> Bool {
+    func opaque() -> Bool {
         if let lcgImage = self.cgImage {
             let alphaInfo = lcgImage.alphaInfo;
             let opaque = alphaInfo == CGImageAlphaInfo.last || alphaInfo == CGImageAlphaInfo.first || alphaInfo == CGImageAlphaInfo.none;
@@ -20,7 +20,7 @@ public extension UIImage {
         }
     }
     
-    public func tint(tintColor: UIColor, blendMode: CGBlendMode = .destinationIn) -> UIImage? {
+    func tint(tintColor: UIColor, blendMode: CGBlendMode = .destinationIn) -> UIImage? {
         let imageIn = self;
         let rect = CGRect(x: 0, y: 0, width: imageIn.size.width, height: imageIn.size.height);
         UIGraphicsBeginImageContextWithOptions(imageIn.size, self.opaque(), imageIn.scale);
