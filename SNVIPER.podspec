@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SNVIPER"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "SNVIPER."
 
   # This description is used to generate tags and improve search results.
@@ -138,7 +138,7 @@ Pod::Spec.new do |s|
   s.dependency 'Moya'
   s.dependency 'FCUUID'
   s.dependency 'YYCache'
-  s.dependency 'HandyJSON'
+  s.dependency 'HandyJSON', '~> 5.0.0-beta'
   s.dependency 'MJRefresh'
   s.dependency 'UITableView+FDTemplateLayoutCell'
   s.dependency 'SNExtensions'
