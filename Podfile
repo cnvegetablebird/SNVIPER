@@ -7,7 +7,7 @@ use_frameworks!
 pod 'Moya'
 pod 'FCUUID'
 pod 'YYCache'
-pod 'HandyJSON' , '~> 5.0.0-beta'
+pod 'HandyJSON'
 pod 'MJRefresh'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'SNExtensions' , '~> 1.1.4'
