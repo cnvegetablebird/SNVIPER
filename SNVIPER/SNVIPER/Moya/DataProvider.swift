@@ -17,22 +17,12 @@ let NSNotificationCenterWithMarks = "NSNotificationCenterWithMarks";
 public protocol DataProviderProtocol {
     
     @discardableResult
-    func request<T: HandyJSON>(target: TargetType,
-                               model: T.Type,
-                               completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
+    func refresh(target: TargetType, callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
     
     @discardableResult
-    func refresh<T: HandyJSON>(target: TargetType,
-                               model: T.Type,
-                               completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
+    func query(target: TargetType, callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
     
-    @discardableResult
-    func query<T: HandyJSON>(target: TargetType,
-                             model: T.Type,
-                             completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
-    
-    func local<T: HandyJSON>(target: TargetType,
-                             model: T.Type)  -> (returnData: T?, result:Result<Moya.Response, MoyaError>?)?;
+    func local(target: TargetType)  -> Result<Moya.Response, MoyaError>?;
     
 }
 
@@ -58,70 +48,28 @@ open class DataProvider<Target: TargetType>: MoyaProvider<Target> {
         super.init(endpointClosure: endpointClosure, requestClosure: requestClosure, stubClosure: stubClosure, callbackQueue: callbackQueue, manager: manager, plugins: plugins, trackInflights: trackInflights);
     }
     
-    private func targetError<T: HandyJSON>(completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
+    private func targetError(completion: ((Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
         let message = "target error";
         let error = MoyaError.underlying(NSError(domain: message, code: NSURLErrorUnknown, userInfo: nil), nil)
         let r = Result<Moya.Response, MoyaError>.failure(error);
-        completion?(nil, r);
+        completion?(r);
         return nil;
-    }
-}
-
-extension DataProvider {
-    
-    func signatureString(target: BaseTargetType) -> String {
-        
-        var sig = target.baseURL.absoluteString + target.path;
-        var shouldUseQuestionMark = sig.contains("?");
-        
-        let params = target.customParameters;
-        
-        guard let dParams = params else {
-            return sig;
-        }
-        
-        for key in dParams.keys {
-            if shouldUseQuestionMark {
-                if let value = dParams[key] {
-                    shouldUseQuestionMark = false;
-                    sig.append("?\(key)=\(value)");
-                }
-            }
-            else {
-                if let value = dParams[key] {
-                    sig.append("&\(key)=\(value)");
-                }
-            }
-        }
-        return sig;
     }
 }
 
 extension DataProvider: DataProviderProtocol {
     
     @discardableResult
-    open func request<T: HandyJSON>(target: TargetType,
-                               model: T.Type,
-                               completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
-        return nil;
-    }
-    
-    @discardableResult
-    open func refresh<T: HandyJSON>(target: TargetType,
-                               model: T.Type,
-                               completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
+    open func refresh(target: TargetType, callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none,
+                               completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
         if let t = target as? Target {
-            return request(t , completion: { (result) in
-                guard let returnData = try? result.value?.mapModel(model) else {
-                    completion?(nil,result);
-                    return;
-                }
+            return request(t, callbackQueue: callbackQueue, progress: progress, completion: { (result) in
                 if let t = target as? BaseTargetType, let d = result.value?.data {
-                    let sig = self.signatureString(target: t);
-                    CacheStore.sharedInstance.setCachedData(value: d, expiredTime: t.expiredTime, key: sig);
+                    let sig = t.signatureString;
+                    SNCacheStore.sharedInstance.setCachedData(value: d, expiredTime: t.expiredTime, key: sig);
                 }
-                completion?(returnData,result);
-            })
+                completion?(result);
+            });
         }
         else {
             return targetError(completion: completion);
@@ -129,27 +77,24 @@ extension DataProvider: DataProviderProtocol {
     }
     
     @discardableResult
-    open func query<T: HandyJSON>(target: TargetType,
-                             model: T.Type,
-                             completion: ((_ returnData: T?, _ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
+    open func query(target: TargetType, callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none,
+                             completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
         
-        let data = local(target: target, model: model);
-        if let _ = data?.result?.value {
-            completion?(data?.returnData, data?.result);
+        let data = local(target: target);
+        if let _ = data?.result.value?.data {
+            completion?(data?.result);
             return nil;
         }
         else {
-            return refresh(target: target, model: model, completion: completion);
+            return refresh(target: target, callbackQueue: callbackQueue, progress: progress, completion: completion);
         }
-        
     }
     
-    open func local<T: HandyJSON>(target: TargetType,
-                                      model: T.Type)  -> (returnData: T?, result:Result<Moya.Response, MoyaError>?)? {
+    open func local(target: TargetType)  -> Result<Moya.Response, MoyaError>? {
         
         if let t = target as? BaseTargetType {
-            let sig = signatureString(target: t);
-            let cacheModel: CacheDataModel? = CacheStore.sharedInstance.cachedObjectForKey(key: sig);
+            let sig = t.signatureString;
+            let cacheModel: SNCacheDataModel? = SNCacheStore.sharedInstance.cachedObjectForKey(key: sig);
             
             if let cacheModel = cacheModel, let expiredTime = Double(cacheModel.expiredTime){
                 let time: Double = Date().timeIntervalSince1970 as Double;
@@ -161,11 +106,9 @@ extension DataProvider: DataProviderProtocol {
                     let data = cacheModel.value;
                     
                     if let d = data {
-                        let str =  String(data: d, encoding: String.Encoding.utf8);
-                        let model = JSONDeserializer<T>.deserializeFrom(json: str);
                         let response = Response(statusCode: 200, data: d);
                         let r = Result<Moya.Response, MoyaError>.success(response);
-                        return (model, r);
+                        return (r);
                     }
                 }
             }
@@ -193,8 +136,6 @@ public extension MoyaProvider {
         
         do {
             var urlRequest = try endpoint.urlRequest()
-            urlRequest.timeoutInterval = 10;
-            
             if let headerFields = endpoint.httpHeaderFields {
                 for key in headerFields.keys {
                     if let value = headerFields[key] {

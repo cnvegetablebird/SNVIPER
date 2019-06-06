@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CacheDataModel:NSObject,NSCoding{
+public class SNCacheDataModel:NSObject,NSCoding{
     var expiredTime: String = "";
     var indexedKey: String = "";
     var value: Data!;

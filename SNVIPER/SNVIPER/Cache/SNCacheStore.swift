@@ -10,16 +10,16 @@ import UIKit
 import YYCache
 import SNExtensions
 
-public class CacheStore {
+public class SNCacheStore {
     
-    public static let sharedInstance = CacheStore();
+    public static let sharedInstance = SNCacheStore();
     
     private init() {
         
     }
     
     let yycache: YYCache = {
-        let yycache: YYCache = YYCache(name: "CacheStore")!;
+        let yycache: YYCache = YYCache(name: "SNCacheStore")!;
         yycache.memoryCache.ageLimit = 3600;
         yycache.memoryCache.autoTrimInterval = 30;
         yycache.diskCache.ageLimit = 86400 * 7;
@@ -37,7 +37,7 @@ public class CacheStore {
         let md5Key = key.md5;
         let time = Date().timeIntervalSince1970 + expiredTime;
         
-        let cacheModel = CacheDataModel();
+        let cacheModel = SNCacheDataModel();
         cacheModel.value = value;
         cacheModel.expiredTime = "\(time)";
         cacheModel.indexedKey = md5Key;
@@ -45,7 +45,7 @@ public class CacheStore {
         setCachedObject(cachedObject: cacheModel, key: md5Key);
     }
     
-    public func setCachedObject(cachedObject: CacheDataModel, key: String) {
+    public func setCachedObject(cachedObject: SNCacheDataModel, key: String) {
         
         if key.count < 0 {
             return;
@@ -58,16 +58,16 @@ public class CacheStore {
         let md5Key = key.md5;
         let object = yycache.object(forKey: md5Key);
         
-        if let model = object as? CacheDataModel {
+        if let model = object as? SNCacheDataModel {
             return model.value;
         }
         return nil;
     }
     
-    public func cachedObjectForKey(key: String) -> CacheDataModel? {
+    public func cachedObjectForKey(key: String) -> SNCacheDataModel? {
         let md5Key = key.md5;
         let model = yycache.object(forKey: md5Key);
-        return model as? CacheDataModel;
+        return model as? SNCacheDataModel;
     }
     
     public func removeCachedObjectForKey(key: String) {
