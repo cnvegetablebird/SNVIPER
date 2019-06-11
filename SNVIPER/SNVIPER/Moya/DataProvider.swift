@@ -20,10 +20,7 @@ public protocol DataProviderProtocol {
     func refresh(target: TargetType, callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
     
     @discardableResult
-    func query(target: TargetType, callbackQueue: DispatchQueue?, progress: ProgressBlock?, completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
-    
-    func local(target: TargetType)  -> Result<Moya.Response, MoyaError>?;
-    
+    func refresh(target: TargetType, completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable?;
 }
 
 extension Response {
@@ -77,43 +74,9 @@ extension DataProvider: DataProviderProtocol {
     }
     
     @discardableResult
-    open func query(target: TargetType, callbackQueue: DispatchQueue? = .none, progress: ProgressBlock? = .none,
-                             completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
-        
-        let data = local(target: target);
-        if let _ = data?.result.value?.data {
-            completion?(data?.result);
-            return nil;
-        }
-        else {
-            return refresh(target: target, callbackQueue: callbackQueue, progress: progress, completion: completion);
-        }
-    }
-    
-    open func local(target: TargetType)  -> Result<Moya.Response, MoyaError>? {
-        
-        if let t = target as? BaseTargetType {
-            let sig = t.signatureString;
-            let cacheModel: SNCacheDataModel? = SNCacheStore.sharedInstance.cachedObjectForKey(key: sig);
-            
-            if let cacheModel = cacheModel, let expiredTime = Double(cacheModel.expiredTime){
-                let time: Double = Date().timeIntervalSince1970 as Double;
-                if time > expiredTime {
-                    return nil;
-                }
-                else {
-                    
-                    let data = cacheModel.value;
-                    
-                    if let d = data {
-                        let response = Response(statusCode: 200, data: d);
-                        let r = Result<Moya.Response, MoyaError>.success(response);
-                        return (r);
-                    }
-                }
-            }
-        }
-        return nil;
+    open func refresh(target: TargetType,
+                      completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
+        return refresh(target: target, callbackQueue: .none, progress: .none, completion: completion);
     }
 }
 

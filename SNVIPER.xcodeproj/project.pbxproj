@@ -13,8 +13,8 @@
 		049CDE0E22A8F19F002D8C35 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDE0822A8F19F002D8C35 /* BaseTargetType.swift */; };
 		049CDE0F22A8F19F002D8C35 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDE0922A8F19F002D8C35 /* DataProvider.swift */; };
 		049CDE1022A8F19F002D8C35 /* CertificateTrustUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDE0A22A8F19F002D8C35 /* CertificateTrustUtil.swift */; };
+		04C8548922AF8CC2005C1BD0 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8548822AF8CC2005C1BD0 /* NavigationController.swift */; };
 		39395A22195C895FC3E5291B /* Pods_SNVIPER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0793BA5692F74D6BC5B10E4 /* Pods_SNVIPER.framework */; };
-		4FF4D37B21E8681C0068F919 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4D37A21E8681C0068F919 /* NavigationController.swift */; };
 		DE0A049621216B0B00693022 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A049521216B0B00693022 /* AppDelegate.swift */; };
 		DE0A049821216B0B00693022 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A049721216B0B00693022 /* ViewController.swift */; };
 		DE0A049B21216B0B00693022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE0A049921216B0B00693022 /* Main.storyboard */; };
@@ -59,11 +59,6 @@
 		DE0A052A21216F9200693022 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04F621216F9200693022 /* UIImageExtension.swift */; };
 		DE0A052B21216F9200693022 /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04F721216F9200693022 /* BaseViewProtocol.swift */; };
 		DE0A052C21216F9200693022 /* InteractorLifeCycleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04F921216F9200693022 /* InteractorLifeCycleProtocol.swift */; };
-		DE0A052D21216F9200693022 /* URIPathConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04FB21216F9200693022 /* URIPathConverter.swift */; };
-		DE0A052E21216F9200693022 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04FC21216F9200693022 /* Router.swift */; };
-		DE0A052F21216F9200693022 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04FD21216F9200693022 /* RouterProtocol.swift */; };
-		DE0A053021216F9200693022 /* RouterPluginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04FE21216F9200693022 /* RouterPluginProtocol.swift */; };
-		DE0A053121216F9200693022 /* RouterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A04FF21216F9200693022 /* RouterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +85,8 @@
 		049CDE0822A8F19F002D8C35 /* BaseTargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		049CDE0922A8F19F002D8C35 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		049CDE0A22A8F19F002D8C35 /* CertificateTrustUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificateTrustUtil.swift; sourceTree = "<group>"; };
+		04C8548822AF8CC2005C1BD0 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		290E503ED5590935CA3F2F49 /* Pods-SNVIPER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNVIPER.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNVIPER/Pods-SNVIPER.release.xcconfig"; sourceTree = "<group>"; };
-		4FF4D37A21E8681C0068F919 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		97ABFA3CB6EEACD5243687E2 /* Pods-SNVIPER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNVIPER.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNVIPER/Pods-SNVIPER.debug.xcconfig"; sourceTree = "<group>"; };
 		DE0A049221216B0B00693022 /* SNVIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNVIPER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE0A049521216B0B00693022 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,11 +138,6 @@
 		DE0A04F621216F9200693022 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		DE0A04F721216F9200693022 /* BaseViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		DE0A04F921216F9200693022 /* InteractorLifeCycleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractorLifeCycleProtocol.swift; sourceTree = "<group>"; };
-		DE0A04FB21216F9200693022 /* URIPathConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URIPathConverter.swift; sourceTree = "<group>"; };
-		DE0A04FC21216F9200693022 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		DE0A04FD21216F9200693022 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
-		DE0A04FE21216F9200693022 /* RouterPluginProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterPluginProtocol.swift; sourceTree = "<group>"; };
-		DE0A04FF21216F9200693022 /* RouterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterManager.swift; sourceTree = "<group>"; };
 		F0793BA5692F74D6BC5B10E4 /* Pods_SNVIPER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNVIPER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -271,7 +261,6 @@
 				DE0A04E521216F9200693022 /* Model */,
 				DE0A04E921216F9200693022 /* View */,
 				DE0A04F821216F9200693022 /* Interactor */,
-				DE0A04FA21216F9200693022 /* Router */,
 			);
 			path = SNVIPER;
 			sourceTree = "<group>";
@@ -323,6 +312,7 @@
 		DE0A04DF21216F9200693022 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				04C8548822AF8CC2005C1BD0 /* NavigationController.swift */,
 				DE0A04E021216F9200693022 /* AddViewProtocol.swift */,
 				DE0A04E121216F9200693022 /* ViewToastProtocol.swift */,
 				DE0A04E221216F9200693022 /* BaseViewController.swift */,
@@ -369,19 +359,6 @@
 				DE0A04F921216F9200693022 /* InteractorLifeCycleProtocol.swift */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		DE0A04FA21216F9200693022 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				4FF4D37A21E8681C0068F919 /* NavigationController.swift */,
-				DE0A04FB21216F9200693022 /* URIPathConverter.swift */,
-				DE0A04FC21216F9200693022 /* Router.swift */,
-				DE0A04FD21216F9200693022 /* RouterProtocol.swift */,
-				DE0A04FE21216F9200693022 /* RouterPluginProtocol.swift */,
-				DE0A04FF21216F9200693022 /* RouterManager.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,7 +540,6 @@
 				DE0A052721216F9200693022 /* BaseCollectionReusableView.swift in Sources */,
 				DE0A051921216F9200693022 /* ViewHUDProtocol.swift in Sources */,
 				DE0A051E21216F9200693022 /* RefreshStatusProtocol.swift in Sources */,
-				DE0A052D21216F9200693022 /* URIPathConverter.swift in Sources */,
 				DE0A050A21216F9200693022 /* SNURLProtocol.swift in Sources */,
 				DE0A049821216B0B00693022 /* ViewController.swift in Sources */,
 				DE0A051C21216F9200693022 /* HandyJSONModel.swift in Sources */,
@@ -574,8 +550,8 @@
 				DE0A051221216F9200693022 /* BaseCollectionAdapter.swift in Sources */,
 				DE0A052C21216F9200693022 /* InteractorLifeCycleProtocol.swift in Sources */,
 				049CDE0C22A8F19F002D8C35 /* CustomServerTrustPolicyManager.swift in Sources */,
+				04C8548922AF8CC2005C1BD0 /* NavigationController.swift in Sources */,
 				DE0A052521216F9200693022 /* BaseTableViewHeaderFooterView.swift in Sources */,
-				DE0A053021216F9200693022 /* RouterPluginProtocol.swift in Sources */,
 				049CDE0E22A8F19F002D8C35 /* BaseTargetType.swift in Sources */,
 				DE0A049621216B0B00693022 /* AppDelegate.swift in Sources */,
 				049CDE0D22A8F19F002D8C35 /* HandleNetworkData.swift in Sources */,
@@ -583,23 +559,19 @@
 				DE0A052621216F9200693022 /* GetViewProtocol.swift in Sources */,
 				DE0A051D21216F9200693022 /* BaseModelProtocol.swift in Sources */,
 				DE0A052021216F9200693022 /* BaseTableViewCell.swift in Sources */,
-				4FF4D37B21E8681C0068F919 /* NavigationController.swift in Sources */,
 				DE0A052A21216F9200693022 /* UIImageExtension.swift in Sources */,
 				DE0A052221216F9200693022 /* BaseCollectionViewCell.swift in Sources */,
 				DE0A050921216F9200693022 /* SNURLCache.swift in Sources */,
 				DE0A052821216F9200693022 /* UIWindowExtension.swift in Sources */,
-				DE0A053121216F9200693022 /* RouterManager.swift in Sources */,
 				DE0A051321216F9200693022 /* SectionCollectionViewAdapter.swift in Sources */,
 				DE0A051521216F9200693022 /* RowViewAdapterProtocol.swift in Sources */,
 				049CDE0B22A8F19F002D8C35 /* NetworkReachabilityStatusManager.swift in Sources */,
-				DE0A052F21216F9200693022 /* RouterProtocol.swift in Sources */,
 				DE0A051721216F9200693022 /* ViewToastProtocol.swift in Sources */,
 				DE0A051021216F9200693022 /* SectionViewAdapterProtocol.swift in Sources */,
 				DE0A052921216F9200693022 /* UINaViewControllerExtension.swift in Sources */,
 				DE0A050E21216F9200693022 /* SectionTableViewAdapter.swift in Sources */,
 				DE0A051421216F9200693022 /* RowCollectionViewAdapter.swift in Sources */,
 				DE0A050821216F9200693022 /* SNCacheDataModel.swift in Sources */,
-				DE0A052E21216F9200693022 /* Router.swift in Sources */,
 				DE0A051F21216F9200693022 /* DefaultEmptyView.swift in Sources */,
 				049CDE0F22A8F19F002D8C35 /* DataProvider.swift in Sources */,
 				DE0A051121216F9200693022 /* BaseAdapter.swift in Sources */,
