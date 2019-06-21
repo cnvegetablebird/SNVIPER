@@ -51,11 +51,6 @@ open class SectionTableViewAdapter<SectionItemType, RowItemType>: BaseTableAdapt
         return sectionItemCount();
     }
     
-    open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 72;
-    }
-    
     override open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let reuseId = reuseIdForHeaderView(section);

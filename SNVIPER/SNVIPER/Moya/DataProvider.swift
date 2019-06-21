@@ -61,10 +61,6 @@ extension DataProvider: DataProviderProtocol {
                                completion: ((_ result:Result<Moya.Response, MoyaError>?) -> Void)?) -> Cancellable? {
         if let t = target as? Target {
             return request(t, callbackQueue: callbackQueue, progress: progress, completion: { (result) in
-                if let t = target as? BaseTargetType, let d = result.value?.data {
-                    let sig = t.signatureString;
-                    SNCacheStore.sharedInstance.setCachedData(value: d, expiredTime: t.expiredTime, key: sig);
-                }
                 completion?(result);
             });
         }
